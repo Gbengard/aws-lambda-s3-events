@@ -1,4 +1,4 @@
-# Lambda and S3Events Demonstration
+## Lambda and S3Events Demonstration
 
 This project aims to showcase a simple event-driven image processing pipeline using AWS Lambda and S3 buckets. The pipeline comprises two buckets: a source bucket and a processed bucket. Whenever new images are added to the source bucket, a Lambda function is triggered based on the PUT operation. Upon invocation, the Lambda function receives the event and extracts the bucket and object information. Utilizing the `PIL` module, the function pixelates the image with five different variations (8x8, 16x16, 32x32, 48x48, and 64x64) and uploads them to the processed bucket.
 
