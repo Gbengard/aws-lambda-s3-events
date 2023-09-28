@@ -1,4 +1,4 @@
-Lambda and S3Events Demonstration
+#Lambda and S3Events Demonstration
 
 This project aims to showcase a simple event-driven image processing pipeline using AWS Lambda and S3 buckets. The pipeline comprises two buckets: a source bucket and a processed bucket. Whenever new images are added to the source bucket, a Lambda function is triggered based on the PUT operation. Upon invocation, the Lambda function receives the event and extracts the bucket and object information. Utilizing the `PIL` module, the function pixelates the image with five different variations (8x8, 16x16, 32x32, 48x48, and 64x64) and uploads them to the processed bucket.
 
@@ -33,7 +33,7 @@ To add permissions, an inline policy must be created under "Permissions Policy."
 	![Untitled](/images/Untitled2.png)
 
 1. Click on "JSON" and delete the existing contents within the code box.
-2. Open this [link](https://raw.githubusercontent.com/acantril/learn-cantrill-io-labs/master/00-aws-simple-demos/aws-lambda-s3-events/01_LABSETUP/policy/s3pixelator.json) in a new tab.
+2. Open this [link](https://raw.githubusercontent.com/Gbengard/aws-lambda-s3-events/main/Dependencies/policy/s3pixelator.json) in a new tab.
 3. Copy the entire contents of the page and paste them into the code editor box for the permissions policy.
 4. Locate the word `REPLACEME` (four occurrences in total), representing the bucket and object names for both the source and processed buckets.
 	![Untitled](/images/Untitled3.png)
@@ -72,7 +72,7 @@ To create a Lambda deployment package, follow these steps from the CLI/Terminal:
 2. Navigate into the `my_lambda_deployment` folder.
 3. Create a subfolder called `lambda`.
 4. Move into the `lambda` folder.
-5. Create a file named `lambda_function.py` and copy the code for the lambda `pixelator` function from [this link](https://raw.githubusercontent.com/acantril/learn-cantrill-io-labs/master/00-aws-simple-demos/aws-lambda-s3-events/01_LABSETUP/lambda/lambda_function.py) into the file. Save the file.
+5. Create a file named `lambda_function.py` and copy the code for the lambda `pixelator` function from [this link](https://raw.githubusercontent.com/Gbengard/aws-lambda-s3-events/main/Dependencies/lambda/lambda_function.py) into the file. Save the file.
 6. Download the file from [this link](https://files.pythonhosted.org/packages/f3/3b/d7bb231b3bc1414252e77463dc63554c1aeccffe0798524467aca7bad089/Pillow-9.0.1-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl) and place it in the `lambda` folder.
 7. Run the following commands in the same folder:
    - `unzip Pillow-9.0.1-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl`
@@ -101,7 +101,7 @@ Follow these steps to create the Lambda function:
 11. Click on "Upload from" and select the option to upload a `.zip` file.
 	![Untitled](/images/Untitled6.png)
     - You have two options:
-      - Download the zip file to your local machine from [this link](https://github.com/acantril/learn-cantrill-io-labs/blob/master/00-aws-simple-demos/aws-lambda-s3-events/01_LABSETUP/my-deployment-package.zip) and then upload it.
+      - Download the zip file to your local machine from [this link](https://github.com/Gbengard/aws-lambda-s3-events/blob/main/Dependencies/my-deployment-package.zip) and then upload it.
       - Use the zip file created in the previous "Stage 3 (pre)" step. Both zip files are identical.
 12. On the Lambda screen, click on "Upload", locate and select the zip file, and then click the "Save" button.
 	![Untitled](/images/Untitled7.png)
@@ -142,7 +142,7 @@ Perform the following steps to test and monitor the GitHub project:
 
 1. Open a new tab in your browser and navigate to the CloudWatch Logs console using the following URL: [https://console.aws.amazon.com/cloudwatch/home?region=us-east-1#logsV2:log-groups](https://console.aws.amazon.com/cloudwatch/home?region=us-east-1#logsV2:log-groups).
 2. Ensure that you have two tabs open for the S3 console. In one tab, open the `-source` bucket, and in the other tab, open the `-processed` bucket.
-3. In the `-source` bucket tab, select the "Objects" tab and click on "Upload" to upload some files. You can use your own files or obtain them from [this location](https://github.com/acantril/learn-cantrill-io-labs/tree/master/00-aws-simple-demos/aws-lambda-s3-events/01_LABSETUP/media).
+3. In the `-source` bucket tab, select the "Objects" tab and click on "Upload" to upload some files. You can use your own files or obtain them from [this location](https://github.com/Gbengard/aws-lambda-s3-events/tree/main/Dependencies/media).
 4. After uploading the files, click "Close" to exit the upload dialog.
 5. Switch to the CloudWatch Logs tab.
 6. Click the "Refresh" icon in the console and locate the `/aws/lambda/pixelator` log stream. If available, click on the most recent log stream. If it's not visible, continue clicking the "Refresh" icon until the most recent log stream appears.
